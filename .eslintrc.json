@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2020": true
     },
     "extends": [
         "airbnb",
@@ -50,13 +50,21 @@
               "ts": "never",
               "tsx": "never"
           }
-      ],
-      "no-use-before-define": "off",
-      "@typescript-eslint/no-use-before-define": [
-          "error",
-          {
-              "variables": false
-          }
       ]
-    }
+      // "no-use-before-define": "off",
+      // "@typescript-eslint/no-use-before-define": [
+      //     "error",
+      //     {
+      //         "variables": false
+      //     }
+      // ]
+    },
+    "overrides": [
+      {
+        "files": ["*.tsx"],
+        "rules": {
+          "no-use-before-define": "off"
+        }
+      }
+    ]
 }
