@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import peer from '../skyway-config'
+import React from 'react'
 
-const Main: React.FC = () => {
-  const [localId, setLocalId] = useState('')
-
-  useEffect(() => {
-    if (peer) {
-      peer.once('open', (id) => setLocalId(id))
-    }
-  }, [localId])
-
+type PropType = {
+  name: string
+  id: string
+}
+const Main: React.FC<PropType> = ({ name, id }) => {
   return (
     <div>
-      <p>{localId}</p>
+      <p>id: {id}</p>
+      <p>name: {name}</p>
     </div>
   )
 }
