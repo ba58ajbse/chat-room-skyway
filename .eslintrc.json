@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es2020": true
+        "es2021": true
     },
     "extends": [
         "airbnb",
@@ -33,7 +33,6 @@
       }
     },
     "rules": {
-      "@typescript-eslint/indent": ["error", 2],
       "@typescript-eslint/prefer-interface": "off",
       "react/jsx-filename-extension": [
         "error",
@@ -50,21 +49,20 @@
               "ts": "never",
               "tsx": "never"
           }
+      ],
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": [
+          "error",
+          {
+              "variables": false
+          }
+      ],
+      "no-console": "off",
+      "prettier/prettier": [
+          "error",
+          {
+          "endOfLine": "auto"
+          }
       ]
-      // "no-use-before-define": "off",
-      // "@typescript-eslint/no-use-before-define": [
-      //     "error",
-      //     {
-      //         "variables": false
-      //     }
-      // ]
-    },
-    "overrides": [
-      {
-        "files": ["*.tsx"],
-        "rules": {
-          "no-use-before-define": "off"
-        }
-      }
-    ]
+    }
 }
