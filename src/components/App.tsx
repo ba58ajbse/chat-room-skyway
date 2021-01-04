@@ -1,10 +1,11 @@
 import React from 'react'
-import './assets/App.css'
+import '../assets/App.css'
+import Main from './Main'
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Hello, React</h1>
+      <Main />
     </div>
   )
 }
