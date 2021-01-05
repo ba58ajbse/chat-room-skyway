@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Avatar,
@@ -8,6 +8,7 @@ import {
   Button,
   Typography,
 } from '@material-ui/core'
+import SimpleModal from './Modal'
 
 type PropType = {
   name: string
@@ -37,6 +38,13 @@ const useStyles = makeStyles({
 
 const Main: React.FC<PropType> = ({ name, id }) => {
   const classes = useStyles()
+  const [open, setOpen] = useState(false)
+  const [modalType, setModalType] = useState('')
+
+  const modalOpen = (type: 'create' | 'list') => {
+    setOpen(true)
+    setModalType(type)
+  }
 
   return (
     <Card className={classes.root}>
@@ -52,10 +60,15 @@ const Main: React.FC<PropType> = ({ name, id }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">CREATE ROOM</Button>
+        <Button size="small" onClick={() => modalOpen('create')}>
+          CREATE ROOM
+        </Button>
         <br />
-        <Button size="small">SHOW ROOM</Button>
+        <Button size="small" onClick={() => modalOpen('list')}>
+          SHOW ROOM
+        </Button>
       </CardActions>
+      <SimpleModal open={open} setOpen={setOpen} type={modalType} />
     </Card>
   )
 }

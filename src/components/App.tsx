@@ -14,7 +14,8 @@ const App: React.FC = () => {
     }
   }, [localId])
 
-  if (name && peer && localId !== '') {
+  // if (name && peer && localId !== '') {
+  if (peer && localId !== '') {
     return <Main name={name} id={localId} />
   }
   return <SignIn setName={setName} />
