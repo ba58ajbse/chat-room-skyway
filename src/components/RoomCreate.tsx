@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, TextField, Typography } from '@material-ui/core'
+import { createRoom } from '../firebase'
+
+type PropType = {
+  close: () => void
+}
 
 const useStyles = makeStyles(() => ({
   form: {
@@ -11,8 +16,16 @@ const useStyles = makeStyles(() => ({
     marginTop: 10,
   },
 }))
-const RoomCreate: React.FC = () => {
+const RoomCreate: React.FC<PropType> = ({ close }) => {
   const classes = useStyles()
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+
+  const roomCreate = () => {
+    createRoom(name, password)
+    close()
+  }
+
   return (
     <form className={classes.form} noValidate>
       <div>
@@ -27,6 +40,9 @@ const RoomCreate: React.FC = () => {
           margin="normal"
           required
           fullWidth
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setName(e.target.value)
+          }
         />
       </div>
       <div>
@@ -38,6 +54,9 @@ const RoomCreate: React.FC = () => {
           margin="normal"
           required
           fullWidth
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
         />
       </div>
       <Button
@@ -46,6 +65,7 @@ const RoomCreate: React.FC = () => {
         variant="contained"
         color="primary"
         className={classes.submit}
+        onClick={() => roomCreate()}
       >
         作成
       </Button>
