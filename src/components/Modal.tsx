@@ -58,7 +58,7 @@ const SimpleModal: React.FC<PropType> = ({ open, setOpen, type }) => {
         <CloseIcon />
       </IconButton>
       {type === 'create' && <RoomCreate close={close} />}
-      {type === 'list' && <RoomList />}
+      {type === 'list' && <RoomList close={close} />}
     </div>
   )
 
